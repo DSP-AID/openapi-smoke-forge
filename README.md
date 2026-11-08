@@ -24,7 +24,7 @@ Generated from the public DAiL marketplace OpenAPI spec and executed against the
 ```bash
 python -m smoke_forge https://dail-3dci.onrender.com/openapi.json -o demo
 pytest demo/test_generated_smoke.py -q
-# 77 passed in 29.32s   <- every GET/HEAD route of a live production API answered < 500
+# 77 passed in 41.06s   <- every GET/HEAD route of a live production API answered < 500
 ```
 
 Full verbose transcript: [`demo/demo_run_verbose.txt`](demo/demo_run_verbose.txt).

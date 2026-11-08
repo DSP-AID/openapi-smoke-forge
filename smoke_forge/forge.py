@@ -76,7 +76,7 @@ def generate_tests(spec: dict[str, Any], base_url: str) -> str:
         "import urllib.error",
         "import urllib.request",
         "",
-        f'BASE_URL = "{base_url}"',
+        f"BASE_URL = {json.dumps(base_url)}",
         "",
         "",
         "def _smoke(path):",
@@ -101,8 +101,8 @@ def generate_tests(spec: dict[str, Any], base_url: str) -> str:
             "",
             f"def {name}():",
             f"    # smoke: server must answer below 500 for {label}",
-            f'    status = _smoke("{filled}")',
-            '    assert status < 500, "%s -> HTTP %s" % (' + f'"{label}", status)',
+            f"    status = _smoke({json.dumps(filled)})",
+            f'    assert status < 500, {json.dumps(label + " -> HTTP ")} + str(status)',
         ]
         count += 1
     lines.append("")

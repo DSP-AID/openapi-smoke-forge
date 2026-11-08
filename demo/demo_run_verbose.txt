@@ -84,4 +84,4 @@ demo/test_generated_smoke.py::test_get_world_stats PASSED                [ 97%]
 demo/test_generated_smoke.py::test_get_world_subscriptions PASSED        [ 98%]
 demo/test_generated_smoke.py::test_get_world_webhooks_agent_id PASSED    [100%]
 
-============================= 77 passed in 31.15s =============================
+============================= 77 passed in 29.34s =============================
