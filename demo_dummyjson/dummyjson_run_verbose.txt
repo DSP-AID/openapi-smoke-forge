@@ -1,0 +1,86 @@
+openapi-smoke-forge — NEW independent live demo — DummyJSON production API, OpenAPI 3.0.3 spec family
+(distinct from DAiL canonical demo and Swagger Petstore v2/v3 runs) (SWARM L5 slot 3/8, bnty_0557)
+run_at_utc: 2026-11-09T02:19:54+00:00
+clone HEAD: 6d7f2fedd6ad2db987633f5e92a3ee735e9d8df4 (fresh clone of https://github.com/DSP-AID/openapi-smoke-forge)
+spec: https://dummyjson.com/openapi.json (DummyJSON, independent of DAiL and Swagger Petstore; openapi 3.0.3)
+target API: https://dummyjson.com
+generator: python -m smoke_forge https://dummyjson.com/openapi.json --base-url https://dummyjson.com -o demo_dummyjson
+runner: pytest 9.x on CPython 3.12 (Windows), network live, stdlib-only generated suite
+command: pytest test_generated_smoke.py -v
+============================= test session starts =============================
+platform win32 -- Python 3.12.5, pytest-9.1.1, pluggy-1.7.0 -- C:\Python\python.exe
+cachedir: .pytest_cache
+rootdir: C:\workspace\tasks\bnty_0557\src\openapi-smoke-forge
+configfile: pyproject.toml
+plugins: anyio-4.15.1, respx-0.23.1
+collecting ... collected 54 items
+
+demo_dummyjson/test_generated_smoke.py::test_get_2fa PASSED              [  1%]
+demo_dummyjson/test_generated_smoke.py::test_get_auth_me PASSED          [  3%]
+demo_dummyjson/test_generated_smoke.py::test_get_c_identifier PASSED     [  5%]
+demo_dummyjson/test_generated_smoke.py::test_get_carts PASSED            [  7%]
+demo_dummyjson/test_generated_smoke.py::test_get_carts_user_userid PASSED [  9%]
+demo_dummyjson/test_generated_smoke.py::test_get_carts_id PASSED         [ 11%]
+demo_dummyjson/test_generated_smoke.py::test_get_comments PASSED         [ 12%]
+demo_dummyjson/test_generated_smoke.py::test_get_comments_post_postid PASSED [ 14%]
+demo_dummyjson/test_generated_smoke.py::test_get_comments_id PASSED      [ 16%]
+demo_dummyjson/test_generated_smoke.py::test_get_http_httpcode PASSED    [ 18%]
+demo_dummyjson/test_generated_smoke.py::test_get_http_httpcode_message FAILED [ 20%]
+demo_dummyjson/test_generated_smoke.py::test_get_icon_hash_size PASSED   [ 22%]
+demo_dummyjson/test_generated_smoke.py::test_get_image_size PASSED       [ 24%]
+demo_dummyjson/test_generated_smoke.py::test_get_ip PASSED               [ 25%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts PASSED            [ 27%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_search PASSED     [ 29%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_tag_list PASSED   [ 31%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_tag_tag PASSED    [ 33%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_tags PASSED       [ 35%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_user_userid PASSED [ 37%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_id PASSED         [ 38%]
+demo_dummyjson/test_generated_smoke.py::test_get_posts_postid_comments PASSED [ 40%]
+demo_dummyjson/test_generated_smoke.py::test_get_products PASSED         [ 42%]
+demo_dummyjson/test_generated_smoke.py::test_get_products_categories PASSED [ 44%]
+demo_dummyjson/test_generated_smoke.py::test_get_products_category_list PASSED [ 46%]
+demo_dummyjson/test_generated_smoke.py::test_get_products_category_categoryname PASSED [ 48%]
+demo_dummyjson/test_generated_smoke.py::test_get_products_search PASSED  [ 50%]
+demo_dummyjson/test_generated_smoke.py::test_get_products_id PASSED      [ 51%]
+demo_dummyjson/test_generated_smoke.py::test_get_quotes PASSED           [ 53%]
+demo_dummyjson/test_generated_smoke.py::test_get_quotes_random PASSED    [ 55%]
+demo_dummyjson/test_generated_smoke.py::test_get_quotes_random_length PASSED [ 57%]
+demo_dummyjson/test_generated_smoke.py::test_get_quotes_id PASSED        [ 59%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes PASSED          [ 61%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes_meal_type_mealtype PASSED [ 62%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes_search PASSED   [ 64%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes_tag_tag PASSED  [ 66%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes_tags PASSED     [ 68%]
+demo_dummyjson/test_generated_smoke.py::test_get_recipes_id PASSED       [ 70%]
+demo_dummyjson/test_generated_smoke.py::test_get_test PASSED             [ 72%]
+demo_dummyjson/test_generated_smoke.py::test_get_todos PASSED            [ 74%]
+demo_dummyjson/test_generated_smoke.py::test_get_todos_random PASSED     [ 75%]
+demo_dummyjson/test_generated_smoke.py::test_get_todos_random_length PASSED [ 77%]
+demo_dummyjson/test_generated_smoke.py::test_get_todos_user_userid PASSED [ 79%]
+demo_dummyjson/test_generated_smoke.py::test_get_todos_id PASSED         [ 81%]
+demo_dummyjson/test_generated_smoke.py::test_get_users PASSED            [ 83%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_filter PASSED     [ 85%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_me PASSED         [ 87%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_search PASSED     [ 88%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_id PASSED         [ 90%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_userid_carts PASSED [ 92%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_userid_posts PASSED [ 94%]
+demo_dummyjson/test_generated_smoke.py::test_get_users_userid_todos PASSED [ 96%]
+demo_dummyjson/test_generated_smoke.py::test_get_webhook_identifier PASSED [ 98%]
+demo_dummyjson/test_generated_smoke.py::test_get_webhook_identifier_requests PASSED [100%]
+
+================================== FAILURES ===================================
+_______________________ test_get_http_httpcode_message ________________________
+
+    def test_get_http_httpcode_message():
+        # smoke: server must answer below 500 for GET /http/{httpCode}/{message}
+        status = _smoke("/http/1/1")
+>       assert status < 500, "GET /http/{httpCode}/{message} -> HTTP " + str(status)
+E       AssertionError: GET /http/{httpCode}/{message} -> HTTP 500
+E       assert 500 < 500
+
+demo_dummyjson\test_generated_smoke.py:71: AssertionError
+=========================== short test summary info ===========================
+FAILED demo_dummyjson/test_generated_smoke.py::test_get_http_httpcode_message
+======================== 1 failed, 53 passed in 6.71s =========================

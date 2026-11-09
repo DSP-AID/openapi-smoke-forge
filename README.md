@@ -58,6 +58,19 @@ pytest qa_repro_petstore_v2/test_generated_smoke.py -v   # 8 passed in 5.21s
 
 Full report: [`QA_VERIFICATION_2026-11-09.md`](QA_VERIFICATION_2026-11-09.md). Transcripts: [`qa_repro_dail/repro_run_verbose.txt`](qa_repro_dail/repro_run_verbose.txt), [`qa_repro_petstore_v2/petstore_v2_run_verbose.txt`](qa_repro_petstore_v2/petstore_v2_run_verbose.txt).
 
+## Third independent demo (real run, 2026-11-09 — SWARM L5 slot 3/8, bnty_0557)
+
+DummyJSON production API ([spec](https://dummyjson.com/openapi.json), OpenAPI **3.0.3**, 54 GET operations) — a third live spec family independent of both DAiL and the Swagger Petstore hosts:
+
+```bash
+python -m smoke_forge https://dummyjson.com/openapi.json --base-url https://dummyjson.com -o demo_dummyjson
+pytest demo_dummyjson/test_generated_smoke.py -v   # 53 passed, 1 failed in 6.71s
+```
+
+The single failure is a genuine host-semantics finding, not a generator artifact: `GET /http/{httpCode}/{message}` is DummyJSON's own status-code echo endpoint; its spec ships no `example`/`enum`/`default` for those path parameters, so the generator's documented type-based fallback requests `/http/1/1` and the server deliberately answers HTTP 500 for an invalid echoed code. Reproduced on independent direct probes: `/http/1/message` → 500 while `/http/200/message` → 200. All other 53 operations answered < 500.
+
+Verbose transcript: [`demo_dummyjson/dummyjson_run_verbose.txt`](demo_dummyjson/dummyjson_run_verbose.txt). Generated suite (ruff-clean): [`demo_dummyjson/test_generated_smoke.py`](demo_dummyjson/test_generated_smoke.py).
+
 ## Development
 
 ```bash
