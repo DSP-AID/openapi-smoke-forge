@@ -1,0 +1,50 @@
+openapi-smoke-forge — INDEPENDENT live demo run (order ord_0139, SWARM L5)
+run_at_utc: 2026-11-09T00:54:26+00:00
+spec: https://petstore3.swagger.io/api/v3/openapi.json (Swagger Petstore 3.0.0, independent of DAiL)
+target API: https://petstore3.swagger.io/api/v3
+generator: python -m smoke_forge <spec-url> --base-url https://petstore3.swagger.io/api/v3 -o demo_petstore
+runner: pytest 9.x on CPython 3.12 (Windows), network live, stdlib-only generated suite
+command: pytest test_generated_smoke.py -v
+
+============================= test session starts =============================
+platform win32 -- Python 3.12.5, pytest-9.1.1, pluggy-1.7.0 -- C:\Python\python.exe
+cachedir: .pytest_cache
+rootdir: C:\workspace\tasks\bnty_0559\src\openapi-smoke-forge
+configfile: pyproject.toml
+plugins: anyio-4.15.1, respx-0.23.1
+collecting ... collected 8 items
+
+test_generated_smoke.py::test_get_pet_findbystatus PASSED                [ 12%]
+test_generated_smoke.py::test_get_pet_findbytags PASSED                  [ 25%]
+test_generated_smoke.py::test_get_pet_petid PASSED                       [ 37%]
+test_generated_smoke.py::test_get_store_inventory FAILED                 [ 50%]
+test_generated_smoke.py::test_get_store_order_orderid PASSED             [ 62%]
+test_generated_smoke.py::test_get_user_login PASSED                      [ 75%]
+test_generated_smoke.py::test_get_user_logout PASSED                     [ 87%]
+test_generated_smoke.py::test_get_user_username FAILED                   [100%]
+
+================================== FAILURES ===================================
+__________________________ test_get_store_inventory ___________________________
+
+    def test_get_store_inventory():
+        # smoke: server must answer below 500 for GET /store/inventory
+        status = _smoke("/store/inventory")
+>       assert status < 500, "GET /store/inventory -> HTTP " + str(status)
+E       AssertionError: GET /store/inventory -> HTTP 500
+E       assert 500 < 500
+
+test_generated_smoke.py:36: AssertionError
+___________________________ test_get_user_username ____________________________
+
+    def test_get_user_username():
+        # smoke: server must answer below 500 for GET /user/{username}
+        status = _smoke("/user/1")
+>       assert status < 500, "GET /user/{username} -> HTTP " + str(status)
+E       AssertionError: GET /user/{username} -> HTTP 500
+E       assert 500 < 500
+
+test_generated_smoke.py:56: AssertionError
+=========================== short test summary info ===========================
+FAILED test_generated_smoke.py::test_get_store_inventory - AssertionError: GE...
+FAILED test_generated_smoke.py::test_get_user_username - AssertionError: GET ...
+========================= 2 failed, 6 passed in 5.71s =========================

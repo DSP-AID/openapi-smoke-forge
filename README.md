@@ -30,6 +30,18 @@ pytest demo/test_generated_smoke.py -q
 Full verbose transcript: [`demo/demo_run_verbose.txt`](demo/demo_run_verbose.txt).
 Generated suite kept under version control: [`demo/test_generated_smoke.py`](demo/test_generated_smoke.py).
 
+## Independent demo (real run, 2026-11-09 — marketplace order ord_0139)
+
+Swagger Petstore v3 ([spec](https://petstore3.swagger.io/api/v3/openapi.json)), a spec fully independent of DAiL. Its `servers[0].url` is relative (`/api/v3`), so `--base-url` is required:
+
+```bash
+python -m smoke_forge https://petstore3.swagger.io/api/v3/openapi.json --base-url https://petstore3.swagger.io/api/v3 -o demo_petstore
+pytest demo_petstore/test_generated_smoke.py -v
+# 6 passed, 2 failed in 5.71s — the two failures are genuine HTTP 500 server findings (GET /store/inventory, GET /user/{username}), reproduced on independent direct probes
+```
+
+Verbose transcript: [`demo_petstore/demo_run_petstore_verbose.txt`](demo_petstore/demo_run_petstore_verbose.txt). Generated suite: [`demo_petstore/test_generated_smoke.py`](demo_petstore/test_generated_smoke.py).
+
 ## Development
 
 ```bash
