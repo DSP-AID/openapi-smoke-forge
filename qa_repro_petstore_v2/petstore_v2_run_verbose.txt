@@ -1,0 +1,27 @@
+openapi-smoke-forge — NEW independent live demo — Swagger 2.0 spec family (distinct from slot 5/8's Petstore v3 run) (SWARM L5 slot 4/8 QA, bnty_0558)
+run_at_utc: 2026-11-09T01:12:28+00:00
+clone HEAD: 6612466d66e4ef665d103ce75ab56cebd38c07dd (fresh clone of https://github.com/DSP-AID/openapi-smoke-forge)
+spec: https://petstore.swagger.io/v2/swagger.json (Swagger Petstore 2.0, independent of DAiL)
+target API: https://petstore.swagger.io/v2
+generator: python -m smoke_forge https://petstore.swagger.io/v2/swagger.json --base-url https://petstore.swagger.io/v2 -o qa_repro_petstore_v2
+runner: pytest 9.x on CPython 3.12 (Windows), network live, stdlib-only generated suite
+command: pytest test_generated_smoke.py -v
+
+============================= test session starts =============================
+platform win32 -- Python 3.12.5, pytest-9.1.1, pluggy-1.7.0 -- C:\Python\python.exe
+cachedir: .pytest_cache
+rootdir: C:\workspace\tasks\bnty_0558\src\openapi-smoke-forge
+configfile: pyproject.toml
+plugins: anyio-4.15.1, respx-0.23.1
+collecting ... collected 8 items
+
+test_generated_smoke.py::test_get_pet_findbystatus PASSED                [ 12%]
+test_generated_smoke.py::test_get_pet_findbytags PASSED                  [ 25%]
+test_generated_smoke.py::test_get_pet_petid PASSED                       [ 37%]
+test_generated_smoke.py::test_get_store_inventory PASSED                 [ 50%]
+test_generated_smoke.py::test_get_store_order_orderid PASSED             [ 62%]
+test_generated_smoke.py::test_get_user_login PASSED                      [ 75%]
+test_generated_smoke.py::test_get_user_logout PASSED                     [ 87%]
+test_generated_smoke.py::test_get_user_username PASSED                   [100%]
+
+============================== 8 passed in 5.21s ==============================

@@ -42,6 +42,22 @@ pytest demo_petstore/test_generated_smoke.py -v
 
 Verbose transcript: [`demo_petstore/demo_run_petstore_verbose.txt`](demo_petstore/demo_run_petstore_verbose.txt). Generated suite: [`demo_petstore/test_generated_smoke.py`](demo_petstore/test_generated_smoke.py).
 
+## QA reproduction + Swagger 2.0 demo (real run, 2026-11-09 — SWARM L5 slot 4/8, bnty_0558)
+
+Fresh-clone release QA reproduced the canonical demo and added a Swagger **2.0** family demo:
+
+```bash
+# reproduction (2026-11-09: live DAiL spec no longer ships servers[0].url, so --base-url is now required)
+python -m smoke_forge https://dail-3dci.onrender.com/openapi.json --base-url https://dail-3dci.onrender.com -o qa_repro_dail
+pytest qa_repro_dail/test_generated_smoke.py -v          # 77 passed in 37.40s
+
+# Swagger Petstore v2 (Swagger 2.0 spec, independent of DAiL)
+python -m smoke_forge https://petstore.swagger.io/v2/swagger.json --base-url https://petstore.swagger.io/v2 -o qa_repro_petstore_v2
+pytest qa_repro_petstore_v2/test_generated_smoke.py -v   # 8 passed in 5.21s
+```
+
+Full report: [`QA_VERIFICATION_2026-11-09.md`](QA_VERIFICATION_2026-11-09.md). Transcripts: [`qa_repro_dail/repro_run_verbose.txt`](qa_repro_dail/repro_run_verbose.txt), [`qa_repro_petstore_v2/petstore_v2_run_verbose.txt`](qa_repro_petstore_v2/petstore_v2_run_verbose.txt).
+
 ## Development
 
 ```bash

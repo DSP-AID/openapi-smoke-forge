@@ -1,0 +1,96 @@
+openapi-smoke-forge — REPRODUCTION of canonical live demo (README claims 77 passed in 41.06s, 2026-11-08) (SWARM L5 slot 4/8 QA, bnty_0558)
+run_at_utc: 2026-11-09T01:12:20+00:00
+clone HEAD: 6612466d66e4ef665d103ce75ab56cebd38c07dd (fresh clone of https://github.com/DSP-AID/openapi-smoke-forge)
+spec: https://dail-3dci.onrender.com/openapi.json (live DAiL marketplace spec)
+target API: https://dail-3dci.onrender.com
+generator: python -m smoke_forge https://dail-3dci.onrender.com/openapi.json --base-url https://dail-3dci.onrender.com -o qa_repro_dail (2026-11-09: live spec no longer ships servers[0].url, so --base-url is now required; README's no-flag command matches the 2026-11-08 spec)
+runner: pytest 9.x on CPython 3.12 (Windows), network live, stdlib-only generated suite
+command: pytest test_generated_smoke.py -v
+
+============================= test session starts =============================
+platform win32 -- Python 3.12.5, pytest-9.1.1, pluggy-1.7.0 -- C:\Python\python.exe
+cachedir: .pytest_cache
+rootdir: C:\workspace\tasks\bnty_0558\src\openapi-smoke-forge
+configfile: pyproject.toml
+plugins: anyio-4.15.1, respx-0.23.1
+collecting ... collected 77 items
+
+test_generated_smoke.py::test_get_well_known_dail_pubkey PASSED          [  1%]
+test_generated_smoke.py::test_get_well_known_x402 PASSED                 [  2%]
+test_generated_smoke.py::test_get_admin_attribution PASSED               [  3%]
+test_generated_smoke.py::test_get_admin_bounties_failed_settlements PASSED [  5%]
+test_generated_smoke.py::test_get_admin_bounty_requests PASSED           [  6%]
+test_generated_smoke.py::test_get_admin_dm_threads PASSED                [  7%]
+test_generated_smoke.py::test_get_admin_dm_agent_id PASSED               [  9%]
+test_generated_smoke.py::test_get_admin_invites PASSED                   [ 10%]
+test_generated_smoke.py::test_get_admin_payments_incoming PASSED         [ 11%]
+test_generated_smoke.py::test_get_admin_petty_status PASSED              [ 12%]
+test_generated_smoke.py::test_get_admin_referrals_held PASSED            [ 14%]
+test_generated_smoke.py::test_get_admin_rooms PASSED                     [ 15%]
+test_generated_smoke.py::test_get_admin_rooms_room_id_messages PASSED    [ 16%]
+test_generated_smoke.py::test_get_admin_suggestions PASSED               [ 18%]
+test_generated_smoke.py::test_get_admin_treasury_loans PASSED            [ 19%]
+test_generated_smoke.py::test_get_agents PASSED                          [ 20%]
+test_generated_smoke.py::test_get_audit_verify PASSED                    [ 22%]
+test_generated_smoke.py::test_get_bouncer_agents_ips PASSED              [ 23%]
+test_generated_smoke.py::test_get_bouncer_rooms_audit PASSED             [ 24%]
+test_generated_smoke.py::test_get_customers_me PASSED                    [ 25%]
+test_generated_smoke.py::test_get_customers_me_tasks PASSED              [ 27%]
+test_generated_smoke.py::test_get_customers_me_transactions PASSED       [ 28%]
+test_generated_smoke.py::test_get_dm_thread PASSED                       [ 29%]
+test_generated_smoke.py::test_get_health PASSED                          [ 31%]
+test_generated_smoke.py::test_get_ledger_agent_id PASSED                 [ 32%]
+test_generated_smoke.py::test_get_observatory_events PASSED              [ 33%]
+test_generated_smoke.py::test_get_observatory_public_data PASSED         [ 35%]
+test_generated_smoke.py::test_get_observatory_public_newcomers PASSED    [ 36%]
+test_generated_smoke.py::test_get_passport_agent_id_badge PASSED         [ 37%]
+test_generated_smoke.py::test_get_passport_agent_id_data PASSED          [ 38%]
+test_generated_smoke.py::test_get_payments_info PASSED                   [ 40%]
+test_generated_smoke.py::test_get_payments_refunds PASSED                [ 41%]
+test_generated_smoke.py::test_get_payments_status PASSED                 [ 42%]
+test_generated_smoke.py::test_get_payments_usdc_status PASSED            [ 44%]
+test_generated_smoke.py::test_get_payments_x402_status PASSED            [ 45%]
+test_generated_smoke.py::test_get_receipts_bounty_id PASSED              [ 46%]
+test_generated_smoke.py::test_get_runtime PASSED                         [ 48%]
+test_generated_smoke.py::test_get_runtime_messages_agent_id PASSED       [ 49%]
+test_generated_smoke.py::test_get_runtime_receipts PASSED                [ 50%]
+test_generated_smoke.py::test_get_runtime_receipts_verify PASSED         [ 51%]
+test_generated_smoke.py::test_get_runtime_scheduler PASSED               [ 53%]
+test_generated_smoke.py::test_get_runtime_strategies PASSED              [ 54%]
+test_generated_smoke.py::test_get_runtime_strategies_agent_id PASSED     [ 55%]
+test_generated_smoke.py::test_get_runtime_work PASSED                    [ 57%]
+test_generated_smoke.py::test_get_runtime_agent_id_observe PASSED        [ 58%]
+test_generated_smoke.py::test_get_safe PASSED                            [ 59%]
+test_generated_smoke.py::test_get_social_rooms PASSED                    [ 61%]
+test_generated_smoke.py::test_get_staff_bounties_resubmissions PASSED    [ 62%]
+test_generated_smoke.py::test_get_staff_orders_order_id PASSED           [ 63%]
+test_generated_smoke.py::test_get_status_data PASSED                     [ 64%]
+test_generated_smoke.py::test_get_treasury PASSED                        [ 66%]
+test_generated_smoke.py::test_get_vault_status PASSED                    [ 67%]
+test_generated_smoke.py::test_get_world_acceptance_templates PASSED      [ 68%]
+test_generated_smoke.py::test_get_world_advanced_state PASSED            [ 70%]
+test_generated_smoke.py::test_get_world_bounties PASSED                  [ 71%]
+test_generated_smoke.py::test_get_world_bounties_bounty_id PASSED        [ 72%]
+test_generated_smoke.py::test_get_world_bounties_bounty_id_submission PASSED [ 74%]
+test_generated_smoke.py::test_get_world_bulletins PASSED                 [ 75%]
+test_generated_smoke.py::test_get_world_digest_agent_id PASSED           [ 76%]
+test_generated_smoke.py::test_get_world_governance PASSED                [ 77%]
+test_generated_smoke.py::test_get_world_jobs PASSED                      [ 79%]
+test_generated_smoke.py::test_get_world_ledger_agent_id PASSED           [ 80%]
+test_generated_smoke.py::test_get_world_me PASSED                        [ 81%]
+test_generated_smoke.py::test_get_world_memory_agent_id PASSED           [ 83%]
+test_generated_smoke.py::test_get_world_missions PASSED                  [ 84%]
+test_generated_smoke.py::test_get_world_notifications_agent_id PASSED    [ 85%]
+test_generated_smoke.py::test_get_world_orders PASSED                    [ 87%]
+test_generated_smoke.py::test_get_world_orders_order_id PASSED           [ 88%]
+test_generated_smoke.py::test_get_world_profile_agent_id PASSED          [ 89%]
+test_generated_smoke.py::test_get_world_requests PASSED                  [ 90%]
+test_generated_smoke.py::test_get_world_requests_rid PASSED              [ 92%]
+test_generated_smoke.py::test_get_world_services PASSED                  [ 93%]
+test_generated_smoke.py::test_get_world_services_new PASSED              [ 94%]
+test_generated_smoke.py::test_get_world_state PASSED                     [ 96%]
+test_generated_smoke.py::test_get_world_stats PASSED                     [ 97%]
+test_generated_smoke.py::test_get_world_subscriptions PASSED             [ 98%]
+test_generated_smoke.py::test_get_world_webhooks_agent_id PASSED         [100%]
+
+============================= 77 passed in 37.40s =============================
